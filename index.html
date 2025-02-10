@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Ckistian Programando Soluções</title>
+
+    <!-- Descrição do site -->
+    <meta name="description" content="Do planejamento à execução estratégica, oferecemos soluções inteligentes e personalizadas para conectar sua empresa ao futuro da tecnologia.">
+
+    <!-- Miniatura para redes sociais e compartilhamentos -->
+    <meta property="og:title" content="Ckistian Programando Soluções">
+    <meta property="og:description" content="Oferecemos soluções inteligentes e personalizadas para conectar sua empresa ao futuro da tecnologia.">
+    <meta property="og:image" content="https://i.ibb.co/mVNCNHdq/imagem-2025-02-05-145336799.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ckistian-dev.github.io/CkistianProgramandoSolucoes/">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+
+    <style>
+
+        body {
+            background-image: url('https://i.ibb.co/6RZcbr9T/c5e4ec53-aa2a-4521-98c0-6fa6cd4b341b.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .zoom-effect {
+        transition: transform 0.3s ease-in-out;
+        }
+        .zoom-effect:hover {
+            transform: scale(1.03);
+        }
+
+        .carousel-item {
+            max-height: 300px; /* Ajuste o tamanho conforme necessário */
+        }
+
+        .card {
+            height: 550px;
+        }
+
+
+        /* Para telas grandes (≥992px): linha vertical entre itens */
+        @media (min-width: 992px) {
+            .navbar-nav .nav-item:not(:last-child) {
+                border-right: 1px solid white; /* Linha vertical */
+                padding-right: 15px;
+                margin-right: 15px;
+            }
+        }
+
+        /* Para telas pequenas (<992px): linha horizontal entre itens */
+        @media (max-width: 991px) {
+            .navbar-nav {
+                max-width: max-content;
+            }
+
+            .navbar-nav .nav-item {
+                border-bottom: 1px solid white; /* Linha horizontal */
+                padding-bottom: 5px;
+                margin-bottom: 5px;
+            }
+
+            /* Remove a linha do último item para evitar excesso */
+            .navbar-nav .nav-item:last-child {
+                border-bottom: none;
+            }
+        }
+
+    </style>
+
+<!-- Navegação -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-black p-3 fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="https://i.ibb.co/1J0941Yx/imagem-2025-02-09-151802820-removebg-preview.png" alt="Logo" width="50" height="50" class="me-2">
+            <div class="d-flex flex-column">
+                <h4 class="m-0 text-white">MANTOS</h4>
+                <h6 class="m-0 text-white">Roupas Esportivas</h6>
+            </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav ms-auto text-end">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#Produtos" onclick="filterProducts('24/25')">Temporada 24/25</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#Produtos" onclick="filterProducts('23/24')">Temporada 23/24</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#Produtos" onclick="filterProducts('torcedor')">Versão Torcedor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#Produtos" onclick="filterProducts('jogador')">Versão Jogador</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#Produtos" onclick="filterProducts('retrô')">Retro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#Produtos" onclick="filterProducts('feminino')">Feminino</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#Produtos" onclick="filterProducts('infantil')">Infantil</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Início -->
+<section id="Início">
+    <div class="position-relative">
+        <img src="https://wallpapers.com/images/hd/best-football-background-jmh9zxtr8suwizqh.jpg" class="img-fluid w-100 vh-100 object-fit-cover" alt="Imagem de fundo borrada">
+        
+        <div class="position-absolute top-50 start-50 translate-middle text-center text-white container">
+            <img src="https://i.ibb.co/1J0941Yx/imagem-2025-02-09-151802820-removebg-preview.png" alt="Logo" class="img-fluid mb-2" style="filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 1))">
+            <h1 class="fs-3 fw-light col-lg-8 mx-auto text-shadow" style="font-family: 'Bebas Neue', serif; text-shadow: 2px 2px 4px rgba(0, 0, 0, 3);">Não é só um manto, é a força que veste sua vontade de vencer e a confiança de quem sabe que cada detalhe faz a diferença.</h1>
+        </div>
+    </div>
+    
+</section>
+
+<!-- Destaques -->
+
+<section id="Produtos" style="background-image: url('https://i.ibb.co/6RZcbr9T/c5e4ec53-aa2a-4521-98c0-6fa6cd4b341b.png');">
+    <div class="container py-5">
+        <h2 class="text-center mb-4 text-white fs-1">PRODUTOS</h2>
+        <div class="container mt-4">
+            <div class="input-group mb-4">
+                <input type="text" class="form-control" id="searchInput" placeholder="Pesquisar produtos" aria-label="Pesquisar produtos" aria-describedby="search-button" onkeyup="filterProducts()">
+                <button class="btn btn-custom text-white" style="background-color:rgb(34, 33, 33)" type="button" id="search-button" onclick="filterProducts()">Pesquisar</button>
+            </div>
+            <div class="row" id="products-list">
+                <!-- Os produtos serão inseridos dinamicamente aqui -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para exibir imagem ampliada -->
+    <div class="modal fade" id="imageModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <img id="modalImage" class="img-fluid" src="" alt="Imagem Ampliada">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Elemento para exibir a mensagem de "Nenhum resultado encontrado" -->
+<div id="noResultsMessage" class="alert alert-light text-center d-none d-flex justify-content-center align-items-center mb-4" role="alert" style="font-size: 1.5rem; min-height: 550px; max-width: 95%; margin: 0 auto;">
+    Nenhum produto encontrado.
+</div>
+
+<!-- Rodapé -->
+<footer class="bg-custom text-white py-4" style="background-color: rgb(34, 33, 33);">
+    <div class="container">
+      <div class="row">
+
+        <!-- Contato -->
+        <div class="col-md-4 mb-3 text-center row" target="_blank">
+          <h5 style="font-weight: bold;">Contato</h5>
+            <a href="https://wa.me/554588168068?text=Olá!%20Tenho%20interesse%20em%20algumas%20roupas." target="_blank" class="text-white"><i class="fas fa-phone-alt "></i> (45) 98816-8068</a>
+        </div>      
+
+        <!-- Redes Sociais -->
+        <div class="col-md-4 mb-3 text-center" target="_blank">
+          <h5 style="font-weight: bold;">Redes Sociais</h5>
+          <a href="https://www.facebook.com/Ckistianprogramandosolucoes" target="_blank"  class="text-white fs-3 me-3"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/Ckistianprogramandosolucoes/" target="_blank"  class="text-white fs-3 me-3"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/cristiankist/" target="_blank"  class="text-white fs-3 me-3"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+         
+        <!-- Sobre o Site -->
+        <div class="col-md-4 mb-3 text-center" target="_blank">
+          <h5 style="font-weight: bold;">Sobre o Site</h5>
+          <p>Site desenvolvido por Ckistian<br>Entre em contato e comece o seu!</p>
+          <a href="https://wa.me/554591068514?text=Olá!%20Gostaria%20de%20começar%20meu%20site!." target="_blank"  class="text-white"><i class="fas fa-phone-alt "></i> (45) 99986-1237</a>
+        </div>
+
+      </div>
+      <hr class="bg-light">
+      <div class="text-center">
+        <p>&copy; 2025 SitesByCkistian. Todos os direitos reservados.</p>
+      </div>
+    </div>
+ </footer> 
+
+<!-- Botão WhatsApp -->
+<a href="https://wa.me/554588168068?text=Olá!%20Tenho%20interesse%20em%20algumas%20roupas." class="btn btn-success rounded-circle position-fixed d-flex align-items-center justify-content-center" 
+    style="width: 70px; height: 70px; bottom: 20px; right: 20px; font-size: 45px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); z-index: 1000;" 
+    target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+
+        // Função de Filtro de Produtos
+        function filterProducts(category) {
+        const searchInput = document.getElementById('searchInput').value.toLowerCase();
+        const productCards = document.querySelectorAll('.product-card');
+        let hasVisibleProduct = false;
+
+        productCards.forEach(card => {
+            const productName = card.querySelector('.card-title').textContent.toLowerCase();
+
+            // Verifica se o nome ou descrição do produto corresponde à pesquisa (se houver pesquisa)
+            const matchesSearch = searchInput ? productName.includes(searchInput) : true;
+            const matchesCategory = category ? productName.includes(category) : true;
+
+            // Aplica todos os filtros: categoria, tamanho e pesquisa
+            if (matchesSearch && matchesCategory) {
+                card.style.display = 'block';
+                hasVisibleProduct = true;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        // Exibe a mensagem de "Nenhum produto encontrado" se não houver produtos visíveis
+        const noResultsMessage = document.getElementById('noResultsMessage');
+        if (hasVisibleProduct) {
+            noResultsMessage.classList.add('d-none');
+        } else {
+            noResultsMessage.classList.remove('d-none');
+        }
+    }
+
+
+    // Escolher tamanho
+    function toggleSize(productId, size) {
+        // Selecione os botões de tamanho desse produto
+        const buttons = document.querySelectorAll(`#product-${productId} .size-btn-group button`);
+        
+        // Desmarcar todos os botões
+        buttons.forEach(button => {
+            button.classList.remove('active');
+            button.classList.add('btn-dark');  // Volta a cor original
+        });
+
+        // Ativar o botão selecionado
+        const selectedButton = document.querySelector(`#btn-${size}-${productId}`);
+        selectedButton.classList.add('active');
+        selectedButton.classList.remove('btn-dark');  // Altera a cor para indicar seleção
+
+        // Atualiza o link do WhatsApp (ou qualquer outro comportamento)
+        const whatsappLink = document.getElementById(`whatsappLink-${productId}`);
+        const name = document.getElementById(`productName-${productId}`).textContent;
+        whatsappLink.href = `https://wa.me/554588168068?text=Tenho%20interesse%20no(a)%20${name},%20tamanho%20${size}.`;
+    }
+
+// Função para aumentar a imagem
+    function showImage(event) {
+    // Pega o src da imagem clicada
+    const src = event.target.src;
+    // Atualiza a imagem no modal
+    document.getElementById("modalImage").src = src;
+    // Exibe o modal
+    new bootstrap.Modal(document.getElementById("imageModal")).show();
+}
+</script>
+
+<!-- Script de Adição Dinâmica dos Produtos -->
+<script>
+    // Lista de produtos
+    const produtos = [
+        {
+            id: 1,
+            nome: "Camisa Santos Retrô 11/12 - Torcedor Masculina",
+            status: "Esgotado",
+            imagens: [
+                "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tshort-jogo/defeitos/palme/novidades-junho/novidades-julho/santos-retro/1148be21-f146-442a-aa1a-9be94bae9bc2.jpg",
+                "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tshort-jogo/defeitos/palme/novidades-junho/novidades-julho/santos-retro/e7ef49d8-f104-47e2-b65f-e0daf1a4de3f.jpg"
+            ],
+            tamanhos: [],
+        },
+        {
+            id: 2,
+            nome: "Regata Palmeiras Home I 24/25 - Verde",
+            status: "Pronta entrega - G, GG\nSob Encomenda - P, M, 2XL",
+            imagens: [
+                "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tshort-jogo/defeitos/palme/novidades-junho/regatas-palmeiras/582d282c-169d-43c7-ba13-53fa7452c012-compressed.jpg",
+                "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tshort-jogo/defeitos/palme/novidades-junho/regatas-palmeiras/599a22c2-compressed.jpg"
+            ],
+            tamanhos: ["P", "M", "G", "GG", "2XL"],
+        },
+        {
+            id: 3,
+            nome: "Camisa Internacional Home I 24/25 - Torcedor Masculina",
+            status: "Pronta entrega - G, GG\nSob Encomenda - P, M, 2XL",
+            imagens: [
+                "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tempora-marco-novidades/camisa-24-25/internacional-24-25/ea86ddc6-6531-4a3f-9eb5-7fab40a28d8f-compressed.jpg",
+                "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tempora-marco-novidades/camisa-24-25/internacional-24-25/034e5eda-compressed.jpg"
+            ],
+            tamanhos: ["P", "M", "G", "GG"],
+        },
+        {
+            id: 4,
+            nome: "Conjunto Infantil Corinthians Away I 24/25 - Preto (Patrocínio)",
+            status: "Pronta entrega - G, GG\nSob Encomenda - P, M, 2XL",
+            imagens: [
+                "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tshort-jogo/defeitos/palme/novidades-junho/corintnhians-kids/3bf900f3-28e9-4d75-bbbc-1592fbbcfb45-compressed.jpg",
+                "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tshort-jogo/defeitos/palme/novidades-junho/corintnhians-kids/abcd3e9a-9a8f-47fe-ad03-a0802dcf3a8d-compressed.jpg"
+            ],
+            tamanhos: ["18", "20", "22"],
+        },
+        {
+            id: 5,
+            nome: "Regata Vasco Away II 24/25 Torcedor Masculina",
+            status: "Pronta entrega - G, GG\nSob Encomenda - P, M, 2XL",
+            imagens: [
+                "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tem-agosto-2024/camisa-2425/regata-vasco/b03e577b-870f-4df3-9930-c41008897a63-compressed.jpg",
+                "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tem-agosto-2024/camisa-2425/regata-vasco/84edf7ed-7ee9870304e949813917261783935569-640-0-compressed.jpg"
+            ],
+            tamanhos: ["P", "M", "G", "GG", "2XL", "4XL"],
+        },
+        {
+            id: 6,
+            nome: "Conjunto Regata e Short Flamengo Home I 24/25",
+            status: "Pronta entrega - G, GG\nSob Encomenda - P, M, 2XL",
+            imagens: [
+                "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w-24/cj-regata/flamengo/11a50c9f-845a-460f-9792-101df43a14fe.jpg",
+                "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w-24/cj-regata/flamengo/fcdba5eb-588f-4544-b1ab-883c27e27b18.jpg"
+            ],
+            tamanhos: ["M", "G", "GG", "2XL"],
+        }
+    ];
+
+    // Função para carregar os produtos
+    function carregarProdutos() {
+        const container = document.getElementById("products-list");
+        container.innerHTML = ""; // Limpa o conteúdo antes de inserir novos produtos
+
+        produtos.forEach(produto => {
+            // Criando o HTML do card do produto
+            const card = document.createElement("div");
+            card.classList.add("col-md-4", "mb-4", "product-card");
+            card.innerHTML = `
+                <div id="product-${produto.id}" class="card">
+                    <div id="carouselProduct${produto.id}" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            ${produto.imagens.map((img, index) => `
+                                <div class="carousel-item ${index === 0 ? "active" : ""}">
+                                    <img src="${img}" class="d-block w-100" alt="${produto.nome} Imagem ${index + 1}" style="cursor:pointer;" onclick="showImage(event)">
+                                </div>`).join("")}
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselProduct${produto.id}" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselProduct${produto.id}" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <h5 class="card-title" id="productName-${produto.id}">${produto.nome}</h5>
+                        <p class="card-text" style="color: ${produto.status === 'Esgotado' ? 'red' : 'black'}">${produto.status.replace(/\n/g, '<br>')}</p>
+                        <div class="mt-auto">
+                            <div class="size-btn-group mb-3">
+                                ${produto.tamanhos.map(tamanho => `
+                                    <button id="btn-${tamanho}-${produto.id}" class="btn btn-dark zoom-effect" onclick="toggleSize(${produto.id}, '${tamanho}')">${tamanho}</button>
+                                `).join("")}
+                            </div>
+                            <a id="whatsappLink-${produto.id}" href="https://wa.me/554588168068" class="btn btn-success" target="_blank">Conversar no WhatsApp</a>
+                        </div>
+                    </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+// Carregar os produtos ao carregar a página
+document.addEventListener("DOMContentLoaded", carregarProdutos);
+
+    // Carregar os produtos ao carregar a página
+    document.addEventListener("DOMContentLoaded", carregarProdutos);
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

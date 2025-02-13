@@ -45,7 +45,7 @@
         }
 
         .card {
-            height: 550px;
+            height: 540px;
         }
 
 
@@ -74,6 +74,10 @@
             .navbar-nav .nav-item:last-child {
                 border-bottom: none;
             }
+
+            .card {
+            height: auto;
+        }
         }
 
     </style>
@@ -99,7 +103,7 @@
                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownTimesBrasileiros" role="button" data-bs-toggle="dropdown">
                         Times Brasileiros
                     </a>
-                    <ul class="dropdown-menu bg-black" aria-labelledby="navbarDropdownTemporadas">
+                    <ul class="dropdown-menu bg-black text-end" aria-labelledby="navbarDropdownTemporadas" style="font-size: 12px;">
                         <li><a class="dropdown-item text-white" href="#Produtos" onclick="filterProducts('flamengo')">Flamengo</a></li>
                         <li><a class="dropdown-item text-white" href="#Produtos" onclick="filterProducts('corinthians')">Corinthians</a></li>
                         <li><a class="dropdown-item text-white" href="#Produtos" onclick="filterProducts('são paulo')">São Paulo</a></li>
@@ -127,7 +131,7 @@
                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownTimesGlobais" role="button" data-bs-toggle="dropdown">
                         Times Europeus
                     </a>
-                    <ul class="dropdown-menu bg-black" aria-labelledby="navbarDropdownTemporadas">
+                    <ul class="dropdown-menu bg-black text-end" aria-labelledby="navbarDropdownTemporadas" style="font-size: 12px;">
                         <li><a class="dropdown-item text-white" href="#Produtos" onclick="filterProducts('real madrid')">Real Madrid</a></li>
                         <li><a class="dropdown-item text-white" href="#Produtos" onclick="filterProducts('barcelona')">Barcelona</a></li>
                         <li><a class="dropdown-item text-white" href="#Produtos" onclick="filterProducts('manchester united')">Manchester United</a></li>
@@ -276,37 +280,78 @@
     }
 
 
-    // Escolher tamanho
+    // Função de seleção de tamanho
     function toggleSize(productId, size) {
-        // Selecione os botões de tamanho desse produto
+        // Seleciona todos os botões de tamanho deste produto
         const buttons = document.querySelectorAll(`#product-${productId} .size-btn-group button`);
         
-        // Desmarcar todos os botões
+        // Remove a seleção de todos os botões
         buttons.forEach(button => {
             button.classList.remove('active');
-            button.classList.add('btn-dark');  // Volta a cor original
+            button.classList.add('btn-dark'); // Volta à cor original
         });
-
-        // Ativar o botão selecionado
+    
+        // Seleciona e ativa o botão clicado
         const selectedButton = document.querySelector(`#btn-${size}-${productId}`);
+        // Aqui o botão sempre existe (pois foi clicado) e não precisa do if
         selectedButton.classList.add('active');
-        selectedButton.classList.remove('btn-dark');  // Altera a cor para indicar seleção
-
-        // Atualiza o link do WhatsApp (ou qualquer outro comportamento)
-        const whatsappLink = document.getElementById(`whatsappLink-${productId}`);
+        selectedButton.classList.remove('btn-dark'); // Altera a cor para indicar seleção
+        }
+    
+        // Função que trata o clique no botão "Comprar"
+        function comprar(productId) {
+        // Verifica se há um botão de tamanho selecionado
+        const selectedButton = document.querySelector(`#product-${productId} .size-btn-group button.active`);
+        if (!selectedButton) {
+            alert("Por favor, selecione um tamanho antes de prosseguir.");
+            return; // Interrompe a função sem abrir o WhatsApp
+        }
+        
+        // Se houver tamanho selecionado, obtém as informações necessárias
+        const size = selectedButton.textContent;
         const name = document.getElementById(`productName-${productId}`).textContent;
-        whatsappLink.href = `https://wa.me/554588168068?text=Tenho%20interesse%20no(a)%20${name},%20tamanho%20${size}.`;
+        
+        // Monta a URL do WhatsApp com a mensagem
+        const whatsappUrl = `https://wa.me/554588168068?text=Tenho%20interesse%20no(a)%20${encodeURIComponent(name)},%20tamanho%20${encodeURIComponent(size)}.`;
+        
+        // Abre o WhatsApp em uma nova aba
+        window.open(whatsappUrl, '_blank');
+        }
+
+
+    // Função para aumentar a imagem
+        function showImage(event) {
+        // Pega o src da imagem clicada
+        const src = event.target.src;
+        // Atualiza a imagem no modal
+        document.getElementById("modalImage").src = src;
+        // Exibe o modal
+        new bootstrap.Modal(document.getElementById("imageModal")).show();
     }
 
-// Função para aumentar a imagem
-    function showImage(event) {
-    // Pega o src da imagem clicada
-    const src = event.target.src;
-    // Atualiza a imagem no modal
-    document.getElementById("modalImage").src = src;
-    // Exibe o modal
-    new bootstrap.Modal(document.getElementById("imageModal")).show();
-}
+    // Adiciona um listener para cliques em qualquer lugar da página
+    document.addEventListener('click', function (event) {
+        // Seleciona o botão do toggler e o conteúdo colapsável do menu
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbarCollapse = document.getElementById('navbarNav');
+
+        // Verifica se o clique NÃO ocorreu dentro do menu ou no botão de toggler
+        if (!navbarCollapse.contains(event.target) && !navbarToggler.contains(event.target)) {
+        // Se o menu estiver aberto (possuir a classe "show")
+        if (navbarCollapse.classList.contains('show')) {
+            // Tenta obter a instância do collapse do Bootstrap
+            let bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+            // Se a instância não existir, cria uma nova sem alterar o estado automaticamente
+            if (!bsCollapse) {
+            bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
+            }
+            // Fecha o menu
+            bsCollapse.hide();
+        }
+        }
+    });
+
+
 </script>
 
 <!-- Script de Adição Dinâmica dos Produtos -->
@@ -3841,10 +3886,12 @@
                         <div class="mt-auto">
                             <div class="size-btn-group mb-3">
                                 ${produto.tamanhos.map(tamanho => `
-                                    <button id="btn-${tamanho}-${produto.id}" class="btn btn-dark zoom-effect" onclick="toggleSize(${produto.id}, '${tamanho}')">${tamanho}</button>
+                                    <button id="btn-${tamanho}-${produto.id}" class="btn btn-dark btn-sm zoom-effect" onclick="toggleSize(${produto.id}, '${tamanho}')">${tamanho}</button>
                                 `).join("")}
                             </div>
-                            <a id="whatsappLink-${produto.id}" href="https://wa.me/554588168068" class="btn btn-success" target="_blank">Conversar no WhatsApp</a>
+                            <a id="whatsappLink-${produto.id}" class="btn btn-success" href="#" onclick="comprar(${produto.id}); return false;">
+                                Conversar no Whatsapp
+                            </a>
                         </div>
                     </div>
             `;

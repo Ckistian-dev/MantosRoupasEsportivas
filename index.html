@@ -40,15 +40,6 @@
             transform: scale(1.03);
         }
 
-        .carousel-item {
-            max-height: 300px; /* Ajuste o tamanho conforme necessário */
-        }
-
-        .card {
-            height: 550px;
-        }
-
-
         /* Para telas grandes (≥992px): linha vertical entre itens */
         @media (min-width: 992px) {
             .navbar-nav .nav-item:not(:last-child) {
@@ -74,10 +65,6 @@
             .navbar-nav .nav-item:last-child {
                 border-bottom: none;
             }
-
-            .card {
-            height: auto;
-        }
         }
 
     </style>
@@ -187,14 +174,24 @@
         </div>
     </div>
 
-    <!-- Modal para exibir imagem ampliada -->
+    <!-- Modal com Carousel para exibição das imagens ampliadas -->
     <div class="modal fade" id="imageModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body p-0">
-                    <img id="modalImage" class="img-fluid" src="" alt="Imagem Ampliada">
+        <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 95%; width: 95%; max-height: 95%; height: auto;">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+            <div id="modalCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner" id="modalCarouselInner">
+                <!-- Itens do carousel serão inseridos dinamicamente -->
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#modalCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#modalCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
             </div>
+            </div>
+        </div>
         </div>
     </div>
 </section>
@@ -289,16 +286,16 @@
             button.classList.remove('active');
             button.classList.add('btn-dark'); // Volta à cor original
         });
-    
+
         // Seleciona e ativa o botão clicado
         const selectedButton = document.querySelector(`#btn-${size}-${productId}`);
         // Aqui o botão sempre existe (pois foi clicado) e não precisa do if
         selectedButton.classList.add('active');
         selectedButton.classList.remove('btn-dark'); // Altera a cor para indicar seleção
-        }
-    
-        // Função que trata o clique no botão "Comprar"
-        function comprar(productId) {
+    }
+
+    // Função que trata o clique no botão "Comprar"
+    function comprar(productId) {
         // Verifica se há um botão de tamanho selecionado
         const selectedButton = document.querySelector(`#product-${productId} .size-btn-group button.active`);
         if (!selectedButton) {
@@ -315,17 +312,6 @@
         
         // Abre o WhatsApp em uma nova aba
         window.open(whatsappUrl, '_blank');
-        }
-
-
-    // Função para aumentar a imagem
-        function showImage(event) {
-        // Pega o src da imagem clicada
-        const src = event.target.src;
-        // Atualiza a imagem no modal
-        document.getElementById("modalImage").src = src;
-        // Exibe o modal
-        new bootstrap.Modal(document.getElementById("imageModal")).show();
     }
 
     // Adiciona um listener para cliques em qualquer lugar da página
@@ -336,17 +322,17 @@
 
         // Verifica se o clique NÃO ocorreu dentro do menu ou no botão de toggler
         if (!navbarCollapse.contains(event.target) && !navbarToggler.contains(event.target)) {
-        // Se o menu estiver aberto (possuir a classe "show")
-        if (navbarCollapse.classList.contains('show')) {
-            // Tenta obter a instância do collapse do Bootstrap
-            let bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-            // Se a instância não existir, cria uma nova sem alterar o estado automaticamente
-            if (!bsCollapse) {
-            bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
+            // Se o menu estiver aberto (possuir a classe "show")
+            if (navbarCollapse.classList.contains('show')) {
+                // Tenta obter a instância do collapse do Bootstrap
+                let bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                // Se a instância não existir, cria uma nova sem alterar o estado automaticamente
+                if (!bsCollapse) {
+                    bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
+                }
+                // Fecha o menu
+                bsCollapse.hide();
             }
-            // Fecha o menu
-            bsCollapse.hide();
-        }
         }
     });
 
@@ -7953,13 +7939,6 @@
         tamanhos: [],
     },
     {
-        id: 1151,
-        nome: "Retrô Home I 1996 - Bege (Defeito)",
-        status: "Sob Encomenda",
-        imagens: ["https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w25/defeitos/cor-retro/e2e953c4-f675-4bb7-96fc-21bb14a6014e.jpg", "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w25/defeitos/cor-retro/bad30678-ae3f-47aa-9b97-1337536cb600.jpg"],
-        tamanhos: ["P"],
-    },
-    {
         id: 1152,
         nome: "NBA Versão Retrô CURRY #30 Golden State Warriors - Amarela (GOLA REDONDA)",
         status: "Sob Encomenda",
@@ -8149,13 +8128,6 @@
         tamanhos: ["GG"],
     },
     {
-        id: 1179,
-        nome: "Camisa Retrô Messi 10 - 2014/15 (Defeito)",
-        status: "Sob Encomenda",
-        imagens: ["https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w25/defeitos/barc-inf/29f930da-e213-4d2b-94ce-c0ddd51e1dbe.jpg", "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w25/defeitos/barc-inf/3877ab2d-490d-455c-a398-ced13e706935.jpg", "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w25/defeitos/barc-inf/a680548b-38b3-48e3-8a8d-cc56cca74202.jpg", "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w25/defeitos/barc-inf/fed5350b-bccd-4b6b-8e56-444122aebcc1.jpg"],
-        tamanhos: ["GG"],
-    },
-    {
         id: 1180,
         nome: "Camisa Retrô Manchester United 2007/2008 Preta",
         status: "Sob Encomenda",
@@ -8223,13 +8195,6 @@
         nome: "Camisa Retro Fiorentina Home I RUI COSTA 10 -98/99",
         status: "Sob Encomenda",
         imagens: ["https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tem-agosto-2024/retro/messi-10/sg-11134201-7rd4h-lu26djjb93k714-tn.jpeg", "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tem-agosto-2024/retro/rui-10/d1972d0a-b42a-4233-8993-c15892422ffb-compressed.jpg", "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tem-agosto-2024/retro/rui-10/1994accf-70d9-4d16-afbe-16fb2f93eff4-compressed.jpg"],
-        tamanhos: ["P"],
-    },
-    {
-        id: 1190,
-        nome: "Camisa RetrÔ Fc Porto Home I DECO 10 - 2003/04 - DEFEITO",
-        status: "Sob Encomenda",
-        imagens: ["https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tem-agosto-2024/camisa-short/a-defeito/1f164ee2-03e0-49f7-bff2-b305def2e856.jpg", "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tem-agosto-2024/camisa-short/a-defeito/6cf598b4-2656-4984-9d61-d4f9ab4f4cb8.jpg", "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tem-agosto-2024/camisa-short/a-defeito/2a77d5fd-307d-4fde-bb1a-6ac71183d2d6.jpg"],
         tamanhos: ["P"],
     },
     {
@@ -8684,55 +8649,84 @@
 
     ];
 
-    // Função para carregar os produtos
-    function carregarProdutos() {
-        const container = document.getElementById("products-list");
-        container.innerHTML = ""; // Limpa o conteúdo antes de inserir novos produtos
+// Função para carregar os produtos e montar os cards
+function carregarProdutos() {
+  const container = document.getElementById("products-list");
+  container.innerHTML = ""; // Limpa o conteúdo
 
-        produtos.forEach(produto => {
-            // Criando o HTML do card do produto
-            const card = document.createElement("div");
-            card.classList.add("col-md-4", "mb-4", "product-card");
-            card.innerHTML = `
-                <div id="product-${produto.id}" class="card">
-                    <div id="carouselProduct${produto.id}" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            ${produto.imagens.map((img, index) => `
-                                <div class="carousel-item ${index === 0 ? "active" : ""}">
-                                    <img src="${img}" class="d-block w-100" alt="${produto.nome} Imagem ${index + 1}" style="cursor:pointer;" onclick="showImage(event)">
-                                </div>`).join("")}
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselProduct${produto.id}" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselProduct${produto.id}" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        </button>
-                    </div>
-                    <div class="card-body d-flex flex-column justify-content-between">
-                        <h5 class="card-title" id="productName-${produto.id}">${produto.nome}</h5>
-                        <p class="card-text" style="color: ${produto.status === 'Esgotado' ? 'red' : 'black'}">${produto.status.replace(/\n/g, '<br>')}</p>
-                        <div class="mt-auto">
-                            <div class="size-btn-group mb-3">
-                                ${produto.tamanhos.map(tamanho => `
-                                    <button id="btn-${tamanho}-${produto.id}" class="btn btn-dark btn-sm zoom-effect mb-1" onclick="toggleSize(${produto.id}, '${tamanho}')">${tamanho}</button>
-                                `).join("")}
-                            </div>
-                            <a id="whatsappLink-${produto.id}" class="btn btn-success" href="#" onclick="comprar(${produto.id}); return false;">
-                                Conversar no Whatsapp
-                            </a>
-                        </div>
-                    </div>
-            `;
-            container.appendChild(card);
-        });
+  produtos.forEach(produto => {
+    const card = document.createElement("div");
+    card.classList.add("col-md-4", "mb-4", "product-card");
+    card.innerHTML = `
+      <div id="product-${produto.id}" class="card">
+        <div id="carouselProduct${produto.id}" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            ${produto.imagens.map((img, index) => `
+              <div class="carousel-item ${index === 0 ? "active" : ""}">
+                <img src="${img}" class="d-block w-100" alt="${produto.nome} Imagem ${index + 1}" style="cursor:pointer;" onclick="showImage(event, ${produto.id})">
+              </div>
+            `).join("")}
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselProduct${produto.id}" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselProduct${produto.id}" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="card-body d-flex flex-column justify-content-between">
+          <h5 class="card-title" id="productName-${produto.id}">${produto.nome}</h5>
+          <p class="card-text" style="color: ${produto.status === 'Esgotado' ? 'red' : 'black'}">${produto.status}</p>
+          <div class="mt-auto">
+            <div class="size-btn-group mb-3">
+              ${produto.tamanhos.map(tamanho => `
+                <button id="btn-${tamanho}-${produto.id}" class="btn btn-dark btn-sm mb-1" onclick="toggleSize(${produto.id}, '${tamanho}')">${tamanho}</button>
+              `).join("")}
+            </div>
+            <a id="whatsappLink-${produto.id}" class="btn btn-success" href="#">
+                Conversar no Whatsapp
+            </a>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    // Adiciona o evento de clique no botão do WhatsApp
+    const whatsappLink = card.querySelector(`#whatsappLink-${produto.id}`);
+    whatsappLink.addEventListener('click', function (event) {
+      event.preventDefault(); // Previne o comportamento padrão do link
+      comprar(produto.id); // Chama a função de compra com o id do produto
+    });
+
+    container.appendChild(card);
+  });
+}
+
+
+    // Função para exibir o modal com o carousel de imagens
+    function showImage(event, productId) {
+    const produto = produtos.find(p => p.id === productId);
+    if (!produto) return;
+
+    // Monta os itens do carousel com a imagem ajustada corretamente
+    const carouselItems = produto.imagens.map((img, index) => {
+        return `
+        <div class="carousel-item ${index === 0 ? 'active' : ''}" style="text-align: center;">
+            <div class="modal-img-container" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+            <img src="${img}" alt="${produto.nome} Imagem ${index + 1}" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+        </div>
+        `;
+    }).join("");
+
+    document.getElementById("modalCarouselInner").innerHTML = carouselItems;
+    new bootstrap.Modal(document.getElementById("imageModal")).show();
     }
 
-// Carregar os produtos ao carregar a página
-document.addEventListener("DOMContentLoaded", carregarProdutos);
 
-    // Carregar os produtos ao carregar a página
-    document.addEventListener("DOMContentLoaded", carregarProdutos);
+
+    // Inicializa a listagem de produtos
+    carregarProdutos();
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
